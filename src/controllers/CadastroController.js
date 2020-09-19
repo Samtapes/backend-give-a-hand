@@ -8,13 +8,13 @@ module.exports = {
             return res.status(401).json({error: "Esse email já está em uso!"})
         }
     
-        await connection('users').insert({
+        const [id] = await connection('users').insert({
             name,
             email,
             password,
             admin
         })
     
-        return res.json(await connection('users').select('id').where('name', name).where('email', email).first());
+        return res.json({id});
     }
 }

@@ -8,6 +8,7 @@ const CadastroController = require('./controllers/CadastroController');
 const LoginController = require('./controllers/LoginController');
 const NoticiasController = require('./controllers/NoticiasController');
 const CargosController = require('./controllers/CargosController');
+const PedidosControler = require('./controllers/PedidosControler');
 
 
 // Cadastro 
@@ -44,11 +45,11 @@ routes.get('/noticias', NoticiasController.index);
 
 
 // Editar principais noticias
-routes.put('/noticias', NoticiasController.edit);
+routes.put('/noticias/:id', NoticiasController.edit);
 
 
 // Excluir notícia
-routes.delete('/noticias', NoticiasController.delete);
+routes.delete('/noticias/:id', NoticiasController.delete);
 
 
 
@@ -56,15 +57,36 @@ routes.delete('/noticias', NoticiasController.delete);
 
 // Principais cargos no governo
 
+
 // Criar principal cargo no governo
 routes.post('/cargos', CargosController.create);
 
+// Pegando principais cargos no governo
 routes.get('/cargos', CargosController.index);
 
-routes.put('/cargos', CargosController.edit);
+// Editar principal cargo no governo
+routes.put('/cargos/:id', CargosController.edit);
 
-routes.delete('/cargos', CargosController.delete);
+// Deletar princpal cargo no governo
+routes.delete('/cargos/:id', CargosController.delete);
 
+
+
+
+// Pedidos
+
+
+// Criar Pedido 
+routes.post('/pedidos', PedidosControler.create);
+
+// Listar Pedido
+routes.get('/pedidos', PedidosControler.index);
+
+// Editar Pedido
+routes.put('/pedidos/:id', PedidosControler.edit);
+
+// Deletar Pedido
+routes.delete('/pedidos/:id', PedidosControler.delete);
 
 
 module.exports = routes;
