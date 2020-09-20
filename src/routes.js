@@ -6,6 +6,8 @@ const LoginController = require('./controllers/LoginController');
 const NoticiasController = require('./controllers/NoticiasController');
 const CargosController = require('./controllers/CargosController');
 const PedidosControler = require('./controllers/PedidosControler');
+const CasosResolvidosController = require('./controllers/CasosResolvidosController');
+
 
 
 // Register
@@ -85,6 +87,20 @@ routes.put('/pedidos/:id', PedidosControler.edit);
 
 // Delete request
 routes.delete('/pedidos/:id', PedidosControler.delete);
+
+
+
+
+
+// Requests solveds
+
+
+// Add solved request
+routes.put('/casos_resolvidos/:id', CasosResolvidosController.edit);
+
+// List solved requests
+routes.get('/casos_resolvidos', CasosResolvidosController.index);
+
 
 
 module.exports = routes;

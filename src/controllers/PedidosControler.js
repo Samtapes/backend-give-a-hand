@@ -126,16 +126,23 @@ module.exports = {
 
         // Checking if this user can delete this request solicited
         const canDelete = await connection('pedidos').select('id').where('user_id', user_id).where('id', id).first();
+
+
+        const isAdmin = await connection('users').select('admin').where('id', user_id).first();
         
 
         // If is another user trying to delete an another user request
-        if(!canDelete){
+        if(!canDelete && isAdmin['admin'] === 0){
             return res.json({error: "Something wrong!"})
         }
 
 
         // Deleting the request
-        await connection('pedidos').where('user_id', user_id).where('id', id).delete();
+        const deleteRes = await connection('pedidos').where('id', id).delete();
+
+        if(deleteRes === 0){
+            return res.json({error: "Esse pedido não existe!"})
+        }
 
 
         // Returning OK
