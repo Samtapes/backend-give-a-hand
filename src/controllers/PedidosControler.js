@@ -2,15 +2,15 @@ const connection = require('../database/connection');
 
 module.exports = {
 
-    // Listando pedidos
+    // Listing Requests
     async index (req,res){
         const { page = 1 } = req.query;
 
-        // Contando quantos pedidos possuem no total
+        // Counting how much reqeust have in the total
         const [ count ] = await connection('pedidos').count();
 
 
-        // Pegando todos os pedidos e dando innerjoin o nome do usuário com o pedido
+        // Getting all the request and joining the user name with the request
         const requests = await connection('pedidos')
             .join('users', 'users.id', '=', 'pedidos.user_id')
             .limit(5)
@@ -18,11 +18,11 @@ module.exports = {
             .select(['pedidos.*', 'users.name']);
 
 
-        // Retornando no header a contagem dos pedidos
+        // Returning in the header the requests count
         res.header('X-Total-Count', count['count(*)']);
 
 
-        // Retornando os pedidos
+        // Returning the requests
         return res.json(requests)
     },
 
@@ -33,18 +33,18 @@ module.exports = {
 
 
 
-    // Criar Pedido
+    // Create Request
     async create (req,res) {
 
-        // Pegando dados do "formulário"
+        // Getting data in the "form"
         const { request, description, adress, photo } = req.body;
 
 
-        // Pegando a ID do usuário
+        // Getting the user ID
         const user_id = req.headers.authorization;
 
 
-        // Criando pedido no banco de dados
+        // Creating request in the database
         const [id] = await connection('pedidos').insert({
             request,
             description,
@@ -54,7 +54,7 @@ module.exports = {
         });
 
 
-        // Retornando ID do pedido
+        // Returning request ID
         return res.json({id})
     },
 
@@ -65,7 +65,7 @@ module.exports = {
 
 
 
-    // Editar Pedido
+    // Edit Request
     async edit (req,res) {
 
         // Getting "forms" data
@@ -108,10 +108,10 @@ module.exports = {
 
 
 
-    
 
 
-    // Deletar Pedido
+
+    // Delete Request
     async delete (req,res) {
 
         // Getting user ID in headers

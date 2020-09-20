@@ -1,11 +1,15 @@
 const connection = require('../database/connection');
 
 module.exports = {
-    
-    // Listar cargos
+
+    // Listing positions
     async index (req,res){
+
+        // Getting all the positions
         const cargos = await connection('cargos').select('*');
 
+
+        // Returning the positions
         return res.json(cargos);
     },
 
@@ -15,16 +19,22 @@ module.exports = {
 
 
 
-    // Criar cargo
+    // Create new position
     async create (req,res){
+
+        // Getting the data in the "forms"
         const { name, phrase, photo } = req.body;
 
+
+        // Creating the new position
         const [id] = await connection('cargos').insert({
             name,
             phrase,
             photo
         });
 
+
+        // Returning the position ID
         return res.json({id});
     },
 
@@ -34,19 +44,25 @@ module.exports = {
 
 
 
-    // Editar cargo
+    // Edir position
     async edit (req,res){
+
+        // Getting the data in the "form"
         const { name, phrase, photo } = req.body;
 
+        // Getting the position ID
         const { id } = req.params;
 
+
+        // Updating the position
         await connection('cargos').where('id', id).update({
             name,
             phrase,
             photo
         });
 
-        return res.json(await connection('cargos').select('id').where('name', name).where('phrase', phrase).first());
+        // Returning OK
+        return res.status(204).send();
     },
 
 
@@ -55,16 +71,22 @@ module.exports = {
 
 
 
-    // Deletar cargo
+    // Delete position
     async delete (req,res){
-            const { id } = req.params;
 
+        // Getting the position ID
+        const { id } = req.params;
+
+        // Deleting the position
         const delRes = await connection('cargos').where('id', id).delete();
 
+        
+        // If the position doesn't exist
         if(delRes === 0){
             return res.json({error: "Esse cargo não existe"})
         }
 
+        // If the position exist
         else{
             return res.status(204).send();
         }

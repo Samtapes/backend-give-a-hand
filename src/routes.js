@@ -1,9 +1,6 @@
 const express = require('express');
 const routes = express.Router();
 
-const connection = require('./database/connection');
-
-
 const CadastroController = require('./controllers/CadastroController');
 const LoginController = require('./controllers/LoginController');
 const NoticiasController = require('./controllers/NoticiasController');
@@ -11,7 +8,7 @@ const CargosController = require('./controllers/CargosController');
 const PedidosControler = require('./controllers/PedidosControler');
 
 
-// Cadastro 
+// Register
 routes.post('/cadastro', CadastroController.create);
 
 
@@ -21,11 +18,11 @@ routes.post('/cadastro', CadastroController.create);
 
 // Login
 
-// Ver contas existentes
+// Get all the existing accounts
 routes.get('/login', LoginController.index);
 
 
-// Logar
+// Create session
 routes.post('/login', LoginController.create);
 
 
@@ -34,58 +31,59 @@ routes.post('/login', LoginController.create);
 
 
 
-// Principais Notícias
+// News
 
-// Criar principais noticias
+// Create new news
 routes.post('/noticias', NoticiasController.create);
 
 
-// Ver principais noticias
+// List news
 routes.get('/noticias', NoticiasController.index);
 
 
-// Editar principais noticias
+// Edit news
 routes.put('/noticias/:id', NoticiasController.edit);
 
 
-// Excluir notícia
+// Delete news
 routes.delete('/noticias/:id', NoticiasController.delete);
 
 
 
 
 
-// Principais cargos no governo
+// Positions
 
 
-// Criar principal cargo no governo
+// Create new position
 routes.post('/cargos', CargosController.create);
 
-// Pegando principais cargos no governo
+// Geting all the positions
 routes.get('/cargos', CargosController.index);
 
-// Editar principal cargo no governo
+// Edit position
 routes.put('/cargos/:id', CargosController.edit);
 
-// Deletar princpal cargo no governo
+// Delete position
 routes.delete('/cargos/:id', CargosController.delete);
 
 
 
 
-// Pedidos
+
+// Requests
 
 
-// Criar Pedido 
+// Create new request 
 routes.post('/pedidos', PedidosControler.create);
 
-// Listar Pedido
+// List all the requests
 routes.get('/pedidos', PedidosControler.index);
 
-// Editar Pedido
+// Edit request
 routes.put('/pedidos/:id', PedidosControler.edit);
 
-// Deletar Pedido
+// Delete request
 routes.delete('/pedidos/:id', PedidosControler.delete);
 
 
