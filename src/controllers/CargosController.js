@@ -44,7 +44,7 @@ module.exports = {
 
 
 
-    // Edir position
+    // Edit position
     async edit (req,res){
 
         // Getting the data in the "form"
@@ -80,7 +80,7 @@ module.exports = {
         // Deleting the position
         const delRes = await connection('cargos').where('id', id).delete();
 
-        
+
         // If the position doesn't exist
         if(delRes === 0){
             return res.json({error: "Esse cargo não existe"})

@@ -4,6 +4,8 @@ module.exports = {
 
     // Listing Requests
     async index (req,res){
+
+        // Getting the requests page in the route
         const { page = 1 } = req.query;
 
         // Counting how much reqeust have in the total
@@ -101,7 +103,7 @@ module.exports = {
 
 
         // Returning request ID
-        return res.json(await connection('pedidos').select('id').where('request', request).where('description', description).where('user_id', user_id).first())
+        return res.status(204).send();
     },
 
 
@@ -122,7 +124,7 @@ module.exports = {
         const { id } = req.params;
 
 
-        // Checking if this user can edit this request solicited
+        // Checking if this user can delete this request solicited
         const canDelete = await connection('pedidos').select('id').where('user_id', user_id).where('id', id).first();
         
 
