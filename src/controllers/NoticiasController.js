@@ -2,12 +2,18 @@ const connection = require('../database/connection');
 
 
 module.exports = {
+    
     // Listar notícias
     async index (req,res) {
         const noticias = await connection('noticias').select('*');
     
         return res.json(noticias);
     },
+
+
+
+
+
 
 
     // Criar notícia
@@ -24,6 +30,12 @@ module.exports = {
     },
 
 
+
+
+
+
+
+
     // Editar notícia
     async edit (req,res) {
         const { title, content, photo } = req.body;
@@ -37,6 +49,11 @@ module.exports = {
     
         return res.json({id});
     },
+
+
+
+
+
 
 
     // Deletar notícia

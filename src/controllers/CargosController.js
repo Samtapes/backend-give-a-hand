@@ -1,12 +1,18 @@
 const connection = require('../database/connection');
 
 module.exports = {
+    
     // Listar cargos
     async index (req,res){
         const cargos = await connection('cargos').select('*');
 
         return res.json(cargos);
     },
+
+
+
+
+
 
 
     // Criar cargo
@@ -23,6 +29,11 @@ module.exports = {
     },
 
 
+
+
+
+
+
     // Editar cargo
     async edit (req,res){
         const { name, phrase, photo } = req.body;
@@ -37,6 +48,11 @@ module.exports = {
 
         return res.json(await connection('cargos').select('id').where('name', name).where('phrase', phrase).first());
     },
+
+
+
+
+
 
 
     // Deletar cargo

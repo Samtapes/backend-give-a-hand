@@ -1,6 +1,8 @@
 const connection = require('../database/connection');
 
 module.exports = {
+
+    // Creating user account
     async create (req,res) {
         const {name, email, password, admin} = req.body;
     
