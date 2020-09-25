@@ -55,11 +55,18 @@ module.exports = {
 
 
         // Updating the position
-        await connection('cargos').where('id', id).update({
+        const updateResponse = await connection('cargos').where('id', id).update({
             name,
             phrase,
             photo
         });
+
+
+        // If the position doesn't exist
+        if(updateResponse === 0){
+            return res.json({error: "Cargo inexistente!"})
+        }
+
 
         // Returning OK
         return res.status(204).send();

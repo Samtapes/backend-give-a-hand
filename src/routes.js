@@ -4,7 +4,7 @@ const routes = express.Router();
 const CadastroController = require('./controllers/CadastroController');
 const LoginController = require('./controllers/LoginController');
 const NoticiasController = require('./controllers/NoticiasController');
-const CargosController = require('./controllers/CargosController');
+// const CargosController = require('./controllers/CargosController');
 const PedidosControler = require('./controllers/PedidosControler');
 const CasosResolvidosController = require('./controllers/CasosResolvidosController');
 
@@ -53,7 +53,7 @@ routes.delete('/noticias/:id', NoticiasController.delete);
 
 
 
-
+/*
 // Positions
 
 
@@ -68,7 +68,7 @@ routes.put('/cargos/:id', CargosController.edit);
 
 // Delete position
 routes.delete('/cargos/:id', CargosController.delete);
-
+*/
 
 
 

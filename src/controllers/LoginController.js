@@ -16,9 +16,9 @@ module.exports = {
         // Getting the user data
         const { name, password } = req.body;
     
-
+        const id = await connection('users').select('id').where('name', name).where('password', password).first()
         // If the name and the password are correct
-        if(await connection('users').select('id').where('name', name).where('password', password).first()){
+        if(id){
 
             // Getting if the user is admin
             const [ admin ]  = await connection('users').select('admin').where('name', name).where('password', password);
@@ -26,13 +26,13 @@ module.exports = {
             // Returning if the user is admin
             res.header('X-Is-Admin', admin['admin']);
 
-            return res.json({permission: "permited"})
+            return res.json({permission: "permited", id: id.id})
         }
     
 
         // if aren't
         else{
-            return res.json({error: "Conta inexistente"})
+            return res.status(401).send()
         }
     },
 }

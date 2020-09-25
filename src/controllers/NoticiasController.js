@@ -55,11 +55,17 @@ module.exports = {
     
 
         // Updating the news
-        await connection('noticias').where('id', id).update({
+        const updateRes = await connection('noticias').where('id', id).update({
             title,
             content,
             photo
-        })
+        });
+
+
+        // If the news doesn't exist
+        if(updateRes === 0){
+            return res.json({error: "Essa notícia não existe!"});
+        }
     
 
         // Returning OK

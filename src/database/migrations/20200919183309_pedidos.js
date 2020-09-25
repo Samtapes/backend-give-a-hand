@@ -1,4 +1,4 @@
-
+// tabela pedidos
 exports.up = function(knex) {
     return knex.schema.createTable('pedidos', function(table){
         table.increments().primary();
@@ -14,6 +14,7 @@ exports.up = function(knex) {
     })
 };
 
+// Função para derrubar tabela caso dê ruim
 exports.down = function(knex) {
     return knex.schema.dropTabe('pedidos')
 };
