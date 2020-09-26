@@ -52,9 +52,10 @@ module.exports = {
             description,
             adress,
             photo,
-            user_id
+            user_id,
         });
 
+        console.log(id)
 
         // Returning request ID
         return res.json({id})

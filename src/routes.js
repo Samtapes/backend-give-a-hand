@@ -83,7 +83,7 @@ routes.post('/pedidos', PedidosControler.create);
 routes.get('/pedidos', PedidosControler.index);
 
 // Edit request
-routes.put('/pedidos/:id', PedidosControler.edit);
+// routes.put('/pedidos/:id', PedidosControler.edit);
 
 // Delete request
 routes.delete('/pedidos/:id', PedidosControler.delete);
