@@ -3,7 +3,7 @@ const cors = require('cors');
 const routes = require('./routes');
 
 const app = express();
-const PORT = 3333;
+const PORT = process.env.PORT || 3333;
 
 
 
@@ -14,6 +14,4 @@ app.use(express.json());
 app.use(routes);
 
 
-app.listen(PORT, () => {
-    console.log("O servidor estah rodando!");
-})
+app.listen(PORT)
