@@ -8,11 +8,9 @@ module.exports = {
         // Getting how much solved requests have
         const count = await connection('casos_resolvidos').select('quantity').first();
 
-        // Sending the quantity in the response header
-        res.header('X-Total-Count', count['quantity']);
 
         // Returning OK
-        return res.status(204).send();
+        return res.json(count);
     },
 
 

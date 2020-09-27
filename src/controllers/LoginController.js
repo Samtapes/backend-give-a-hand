@@ -23,10 +23,7 @@ module.exports = {
             // Getting if the user is admin
             const [ admin ]  = await connection('users').select('admin').where('name', name).where('password', password);
 
-            // Returning if the user is admin
-            res.header('X-Is-Admin', admin['admin']);
-
-            return res.json({permission: "permited", id: id.id})
+            return res.json({permission: "permited", id: id.id, admin: admin['admin']});
         }
     
 

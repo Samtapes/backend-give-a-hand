@@ -15,7 +15,13 @@ module.exports = {
     },
 
 
+    async specific_index (req,res){
+        const {id} = req.params;
 
+        const noticia = await connection('noticias').where('id', id).select('*').first();
+
+        return res.json(noticia);
+    },
 
 
 

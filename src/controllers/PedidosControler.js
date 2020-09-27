@@ -5,9 +5,6 @@ module.exports = {
     // Listing Requests
     async index (req,res){
 
-        // Getting the requests page in the route
-        const { page = 1 } = req.query;
-
         // Counting how much reqeust have in the total
         const [ count ] = await connection('pedidos').count();
 
@@ -15,8 +12,6 @@ module.exports = {
         // Getting all the request and joining the user name with the request
         const requests = await connection('pedidos')
             .join('users', 'users.id', '=', 'pedidos.user_id')
-            .limit(5)
-            .offset((page - 1) * 5)
             .select(['pedidos.*', 'users.name']);
 
 
@@ -28,6 +23,20 @@ module.exports = {
         return res.json(requests)
     },
 
+
+    
+    async specific_index (req,res) {
+
+        const { id } = req.params;
+
+        const request = await connection('pedidos')
+            .where('pedidos.id', id)
+            .join('users', 'users.id', '=', 'pedidos.user_id')
+            .select(['pedidos.*', 'users.name'])
+            .first();
+
+        return res.json(request);
+    },
 
 
 

@@ -7,6 +7,7 @@ const NoticiasController = require('./controllers/NoticiasController');
 // const CargosController = require('./controllers/CargosController');
 const PedidosControler = require('./controllers/PedidosControler');
 const CasosResolvidosController = require('./controllers/CasosResolvidosController');
+const ProfileController = require('./controllers/ProfileController');
 
 
 
@@ -41,6 +42,9 @@ routes.post('/noticias', NoticiasController.create);
 
 // List news
 routes.get('/noticias', NoticiasController.index);
+
+// Get specific news
+routes.get('/noticia/:id', NoticiasController.specific_index);
 
 
 // Edit news
@@ -82,6 +86,9 @@ routes.post('/pedidos', PedidosControler.create);
 // List all the requests
 routes.get('/pedidos', PedidosControler.index);
 
+// Get specific request
+routes.get('/pedido/:id', PedidosControler.specific_index);
+
 // Edit request
 // routes.put('/pedidos/:id', PedidosControler.edit);
 
@@ -91,9 +98,18 @@ routes.delete('/pedidos/:id', PedidosControler.delete);
 
 
 
+// Get requests by user
+routes.get('/profile', ProfileController.index);
+
+
+
+
+
 
 // Requests solveds
 
+// create db requests
+routes.post('/casos_resolvidos', CasosResolvidosController.create);
 
 // Add solved request
 routes.put('/casos_resolvidos/:id', CasosResolvidosController.edit);
