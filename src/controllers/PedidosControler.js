@@ -56,7 +56,7 @@ module.exports = {
 
 
         // Creating request in the database
-        const [id] = await connection('pedidos').insert({
+        await connection('pedidos').insert({
             request,
             description,
             adress,
@@ -64,10 +64,9 @@ module.exports = {
             user_id,
         });
 
-        console.log(id)
 
         // Returning request ID
-        return res.json({id})
+        return res.status(204).send()
     },
 
 

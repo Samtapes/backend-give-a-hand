@@ -40,7 +40,7 @@ module.exports = {
         });
     
         // Returning the news ID 
-        return res.json({id});
+        return res.status(204).send();
     },
 
 
