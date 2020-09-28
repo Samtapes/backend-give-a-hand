@@ -16,11 +16,7 @@ module.exports = {
 
   staging: {
     client: 'postgresql',
-    connection: {
-      database: 'give-a-hand-database',
-      user:     'samtapes',
-      password: '011203'
-    },
+    connection: 'postgres://iysvuamf:LG8mcpoe5sbHf_3MIIgUrg11tpNJVnOM@lallah.db.elephantsql.com:5432/iysvuamf',
     pool: {
       min: 2,
       max: 10
@@ -34,11 +30,7 @@ module.exports = {
 
   production: {
     client: 'postgresql',
-    connection: {
-      database: 'give-a-hand-database',
-      user:     'samtapes',
-      password: '011203'
-    },
+    connection: 'postgres://iysvuamf:LG8mcpoe5sbHf_3MIIgUrg11tpNJVnOM@lallah.db.elephantsql.com:5432/iysvuamf',
     pool: {
       min: 2,
       max: 10

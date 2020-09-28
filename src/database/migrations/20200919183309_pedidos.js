@@ -16,5 +16,5 @@ exports.up = function(knex) {
 
 // Função para derrubar tabela caso dê ruim
 exports.down = function(knex) {
-    return knex.schema.dropTabe('pedidos')
+    return knex.schema.dropTable('pedidos')
 };

@@ -14,4 +14,4 @@ app.use(express.json());
 app.use(routes);
 
 
-app.listen(PORT)
+app.listen(PORT, () => {console.log("O servidor está rodando")})
