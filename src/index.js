@@ -7,9 +7,7 @@ const PORT = process.env.PORT || 3333;
 
 
 
-app.use(cors({
-    origin: 'https://give-a-hand-frontend.herokuapp.com'
-}));
+app.use(cors());
 
 app.use(express.json());
 
