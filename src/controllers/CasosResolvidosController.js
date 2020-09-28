@@ -48,10 +48,10 @@ module.exports = {
 
     // Creating
     async create (req,res) {
-        const [id] = await connection('casos_resolvidos').insert({
+        await connection('casos_resolvidos').insert({
             quantity: 0
         });
 
-        return res.json({id});
+        return res.status(204).send();
     }
 }

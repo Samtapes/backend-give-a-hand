@@ -33,7 +33,7 @@ module.exports = {
         const { title, content, photo } = req.body;
     
         // Creating new news
-        const [id] = await connection('noticias').insert({
+        await connection('noticias').insert({
             title,
             content,
             photo
