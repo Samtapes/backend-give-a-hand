@@ -10,39 +10,44 @@ module.exports = {
     migrations: {
       directory: './src/database/migrations'
     },
-    useNullAsDefault: true
+    useNullAsDefault: true,
+    seeds: {directory: './src/database/seeds'}
   },
 
   staging: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: 'give-a-hand-database',
+      user:     'samtapes',
+      password: '011203'
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      directory: './src/database/migrations'
+    },
+    useNullAsDefault: true,
+    seeds: {directory: './src/database/seeds'}
   },
 
   production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: 'give-a-hand-database',
+      user:     'samtapes',
+      password: '011203'
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      directory: './src/database/migrations'
+    },
+    useNullAsDefault: true,
+    seeds: {directory: './src/database/seeds'}
   }
 
 };
